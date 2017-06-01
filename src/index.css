@@ -1,5 +1,5 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700";
-/*body {
+body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -14,7 +14,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}*/
+}
 
 .Player {
   background: #182530;
