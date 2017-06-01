@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import Modal from 'react-bootstrap-modal';
+import image from "./images/Itay.jpg";
 
 export default class About extends Component {
   render() {
     return (
-      'about'
-    )
+      <div className="about-me-page">
+        <img className="about-me-image" src={image} />
+      </div>
+    );
   }
 }

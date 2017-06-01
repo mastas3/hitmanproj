@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Controls from "./Controls";
 import TrackInformation from "./TrackInformation";
 import background from "./images/cassette.jpg";
-import audioSource from "./sound/bells.wav";
 import track35 from "./sound/35.mp3";
 import track35beat from "./sound/35 beat.mp3";
+import Anachronism from "./sound/Anachronism.mp3";
+import Anachronismbeat from "./sound/Anachronism beat.mp3";
 
 const TRACKS = [
   {
@@ -24,14 +25,14 @@ const TRACKS = [
   {
     id: 2,
     name: "Anachronism",
-    url: audioSource,
+    url: Anachronism,
     album: "Hitman",
     artist: "Hitman"
   },
   {
     id: 3,
     name: "Anachronism beat (624 part2)",
-    url: "http://google.com",
+    url: Anachronismbeat,
     album: "Hitman",
     artist: "Hitman"
   },

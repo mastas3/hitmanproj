@@ -7,6 +7,7 @@
     "react": "^15.5.4",
     "react-bootstrap-modal": "^3.0.1",
     "react-dom": "^15.5.4",
+    "react-modal": "^1.7.7",
     "react-soundplayer": "^0.3.6",
     "soundcloud-audio": "^1.1.0"
   },

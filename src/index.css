@@ -192,3 +192,26 @@ body {
   flex: 1 1 100%;
   cursor: pointer;
 }
+
+.close-modal {
+  width: 10px;
+  height: 10px;
+  background: black;
+  color:white;
+  border: 5px solid black;
+  text-align: center;
+  padding: 7px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.about-me-page {
+  color: black;
+  background: rgb(243, 255, 254)
+}
+
+/*.about-me-image {
+  position: absolute;
+  left: 20%;
+  top: 0;
+}*/
