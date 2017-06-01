@@ -210,8 +210,24 @@ body {
   background: rgb(243, 255, 254)
 }
 
-/*.about-me-image {
-  position: absolute;
-  left: 20%;
-  top: 0;
-}*/
+.social-links {
+  text-align: center;
+}
+
+.twitter-sign {
+  font-size: 2em;
+  position: relative;
+  right: 15px;
+}
+
+.facebook-sign {
+  font-size: 2em;
+  position: relative;
+  left: 15px;
+}
+
+.soundcloud-sign {
+  font-size: 2em;
+  position: relative;
+  left: 35px;
+}

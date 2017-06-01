@@ -1,0 +1,66 @@
+Html Webpack Plugin:
+<pre>
+  Error: Parse Error: <link rel="stylesheet" href="css/font-awesome.min.css";
+      <!--
+        Notice the use of  in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
+        Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+      -->
+      <title>Player</title>
+    <link href="/static/css/main.a83e5499.css" rel="stylesheet"></head>
+    <body>
+      <noscript>
+        You need to enable JavaScript to run this app.
+      </noscript>
+      <div id="root"></div>
+      <!--
+        This HTML file is a template.
+        If you open it directly in the browser, you will see an empty page.
+        You can add webfonts, meta tags, or analytics to this file.
+        The build step will place the bundled scripts into the <body> tag.
+        To begin the development, run `npm start` or `yarn start`.
+        To create a production bundle, use `npm run build` or `yarn build`.
+      -->
+    <script type="text/javascript" src="/static/js/main.de51c7aa.js"></script></body>
+  </html>
+  
+  - htmlparser.js:235 new HTMLParser
+    [itman]/[html-minifier]/src/htmlparser.js:235:13
+  
+  - htmlminifier.js:946 minify
+    [itman]/[html-minifier]/src/htmlminifier.js:946:3
+  
+  - htmlminifier.js:1299 exports.minify
+    [itman]/[html-minifier]/src/htmlminifier.js:1299:10
+  
+  - index.js:297 
+    [itman]/[html-webpack-plugin]/index.js:297:16
+  
+  - util.js:16 tryCatcher
+    [itman]/[bluebird]/js/release/util.js:16:23
+  
+  - promise.js:512 Promise._settlePromiseFromHandler
+    [itman]/[bluebird]/js/release/promise.js:512:31
+  
+  - promise.js:569 Promise._settlePromise
+    [itman]/[bluebird]/js/release/promise.js:569:18
+  
+  - promise.js:614 Promise._settlePromise0
+    [itman]/[bluebird]/js/release/promise.js:614:10
+  
+  - promise.js:693 Promise._settlePromises
+    [itman]/[bluebird]/js/release/promise.js:693:18
+  
+  - async.js:133 Async._drainQueue
+    [itman]/[bluebird]/js/release/async.js:133:16
+  
+  - async.js:143 Async._drainQueues
+    [itman]/[bluebird]/js/release/async.js:143:10
+  
+  - async.js:17 Immediate.Async.drainQueues
+    [itman]/[bluebird]/js/release/async.js:17:14
+  
+</pre>
