@@ -8,10 +8,19 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #000;
+  height: 20%;
+  width: 20%;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
   padding: 20px;
   color: white;
+  background-image: url('./images/Hitman.png');
+  background-repeat: no-repeat;
+  background-size:contain;
+  background-position:center;
 }
 
 .App-intro {
