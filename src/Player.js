@@ -6,6 +6,10 @@ import track35 from "./sound/35.mp3";
 import track35beat from "./sound/35 beat.mp3";
 import Anachronism from "./sound/Anachronism.mp3";
 import Anachronismbeat from "./sound/Anachronism beat.mp3";
+import Nothing from "./sound/Nothing.mp3";
+import Nothingbeat from "./sound/Nothing beat.mp3";
+import staticp from "./sound/static.mp3";
+import staticbeat from "./sound/static beat.mp3";
 
 const TRACKS = [
   {
@@ -39,28 +43,28 @@ const TRACKS = [
   {
     id: 4,
     name: "Nothing",
-    url: "http://google.com",
+    url: Nothing,
     album: "Hitman",
     artist: "Hitman"
   },
   {
     id: 5,
     name: "Nothing beat",
-    url: "http://google.com",
+    url: Nothingbeat,
     album: "Hitman",
     artist: "Hitman"
   },
   {
     id: 6,
     name: "static",
-    url: "http://google.com",
+    url: staticp,
     album: "Hitman",
     artist: "Hitman"
   },
   {
     id: 7,
     name: "static beat",
-    url: "http://google.com",
+    url: staticbeat,
     album: "Hitman",
     artist: "Hitman"
   }
