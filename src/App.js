@@ -3,6 +3,7 @@ import "./App.css";
 import Player from "./Player";
 import Modal from "react-modal";
 import About from "./About";
+import cassette from './sound/cassette.zip'
 
 const customStyles = {
   content: {
@@ -49,7 +50,7 @@ class App extends Component {
             <div onClick={this.handleCloseModal} className="close-modal">X</div>
             <About handleCloseModal={this.handleCloseModal.bind(this)} />
           </Modal>
-          <li className="download-album">Download the album</li>
+          <li className="download-album"><a href={cassette}>Download the album</a></li>
         </ul>
         <p className="App-intro">
           <Player />

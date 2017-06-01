@@ -194,6 +194,11 @@ body {
   cursor: pointer;
 }
 
+.download-album a {
+  text-decoration: none;
+  color: white;
+}
+
 .close-modal {
   width: 10px;
   height: 10px;
