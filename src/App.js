@@ -5,12 +5,12 @@ import Modal from "react-modal";
 import About from "./About";
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    transform             : 'translate(-50%, -50%)'
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    transform: "translate(-50%, -50%)"
   }
 };
 
@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   handleCloseModal() {
+    console.log('click')
     this.setState({
       showModal: false
     });
@@ -42,11 +43,11 @@ class App extends Component {
         <div className="App-header" />
         <ul className="top-buttons">
           <li className="about-me-button" onClick={this.handleOpenModal}>
-            About me
+            Find me
           </li>
           <Modal isOpen={this.state.showModal} style={customStyles}>
             <div onClick={this.handleCloseModal} className="close-modal">X</div>
-            <About />
+            <About handleCloseModal={this.handleCloseModal.bind(this)} />
           </Modal>
           <li className="download-album">Download the album</li>
         </ul>
