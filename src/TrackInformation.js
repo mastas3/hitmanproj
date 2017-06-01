@@ -8,7 +8,9 @@ export default class TrackInformation extends Component {
   render() {
     return (
       <div className="TrackInformation">
-        Track Information
+        <div className="Name">{this.props.name}</div>
+        <div className="Artist">{this.props.artist}</div>
+        <div className="Album">{this.props.album}</div>
       </div>
     );
   }

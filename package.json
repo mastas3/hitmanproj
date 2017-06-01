@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "boron": "^0.2.3",
     "react": "^15.5.4",
+    "react-bootstrap-modal": "^3.0.1",
     "react-dom": "^15.5.4",
     "react-soundplayer": "^0.3.6",
     "soundcloud-audio": "^1.1.0"

@@ -20,15 +20,16 @@ body {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 5px 10px -5px #121212;
-  height: 667px;
+  height: 600px;
   position: relative;
   width: 375px;
+  top: 100px;
+  bottom: 0px;
+  padding: 25px;
 }
 .Player .Background {
-  width: 150%;
-  height: 150%;
   position: absolute;
-  top: -25%;
+  top: 0;
   left: -25%;
   background-size: cover;
   background-position: center center;
@@ -61,7 +62,7 @@ body {
   position: relative;
 }
 .Player .TrackInformation .Name {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
   font-weight: 300;
 }
@@ -122,11 +123,13 @@ body {
 }
 .Player .Controls {
   position: absolute;
-  bottom: 8%;
   pointer-events: none;
   margin: auto;
+  display: flex;
+  flex-direction: row;
   left: 0;
   right: 0;
+  bottom: 80px;
 }
 .Player .Controls .Button {
   height: 75px;
@@ -163,4 +166,29 @@ body {
 }
 .Player .Controls .Button .fa.fa-play {
   margin-left: 5px;
+}
+
+.top-buttons {
+  display:-webkit-flex;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  justify-content: flex-start;
+  position: relative;
+  top: 100px;
+  left: -20px
+}
+
+.about-me-button {
+  border-radius: 4px;
+  color: white;
+  flex: 1 1 100%;
+  cursor: pointer;
+}
+
+.download-album {
+  border-radius: 4px;
+  color: white;
+  flex: 1 1 100%;
+  cursor: pointer;
 }

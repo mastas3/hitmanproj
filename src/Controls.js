@@ -8,16 +8,12 @@ export default class Controls extends Component {
     super(props);
   }
 
-  onToggle() {
-    this.props.onToggle()
-  }
-
   render() {
     return (
       <div className="Controls">
-        <PrevButton />
-        <PlayButton onToggle={this.onToggle.bind(this)}/>
-        <NextButton />
+        <PrevButton previousTrack={this.props.previousTrack}/>
+        <PlayButton playStatus={this.props.playStatus} onToggle={this.props.onToggle}/>
+        <NextButton nextTrack={this.props.nextTrack}/>
       </div>
     );
   }

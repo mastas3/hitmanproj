@@ -1,21 +1,18 @@
 .App {
   text-align: center;
+  min-width: 400px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
   background-color: #000;
-  height: 20%;
+  height: 15%;
   width: 20%;
   position: absolute;
   top:0;
   left:0;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   color: white;
   background-image: url('./images/Hitman.png');
   background-repeat: no-repeat;
