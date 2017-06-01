@@ -218,16 +218,19 @@ body {
   font-size: 2em;
   position: relative;
   right: 15px;
+  color: black;
 }
 
 .facebook-sign {
   font-size: 2em;
   position: relative;
   left: 15px;
+  color: black;
 }
 
 .soundcloud-sign {
   font-size: 2em;
   position: relative;
   left: 35px;
+  color: black;
 }
