@@ -56,14 +56,14 @@ const TRACKS = [
   },
   {
     id: 6,
-    name: "static",
+    name: "Static",
     url: staticp,
     album: "Hitman",
     artist: "Hitman"
   },
   {
     id: 7,
-    name: "static beat",
+    name: "Static beat",
     url: staticbeat,
     album: "Hitman",
     artist: "Hitman"
