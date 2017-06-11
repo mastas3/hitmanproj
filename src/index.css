@@ -47,8 +47,8 @@ body {
   position: relative;
 }
 .Player .Artwork {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   background-size: cover;
   background-position: center center;
   border-radius: 4px;
@@ -130,7 +130,7 @@ body {
   flex-direction: row;
   left: 0;
   right: 0;
-  bottom: 140px;
+  bottom: 180px;
 }
 .Player .Controls .Button {
   height: 55px;
@@ -175,7 +175,7 @@ body {
   padding: 0;
   justify-content: flex-start;
   position: relative;
-  top: 100px;
+  top: 115px;
   left: -20px
 }
 
