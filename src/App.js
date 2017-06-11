@@ -52,9 +52,7 @@ class App extends Component {
           </Modal>
           <li className="download-album"><a href={cassette}>Download the album</a></li>
         </ul>
-        <p className="App-intro">
           <Player />
-        </p>
       </div>
     );
   }

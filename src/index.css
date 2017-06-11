@@ -130,12 +130,11 @@ body {
   flex-direction: row;
   left: 0;
   right: 0;
-  bottom: 80px;
+  bottom: 140px;
 }
 .Player .Controls .Button {
-  height: 75px;
-  width: 75px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  height: 55px;
+  width: 55px;
   box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
