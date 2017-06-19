@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Controls from "./Controls";
 import TrackInformation from "./TrackInformation";
+import PubSub from "./pubsub";
 import background from "./images/cassette.jpg";
 import track35 from "./sound/35.mp3";
 import track35beat from "./sound/35 beat.mp3";
@@ -17,56 +18,64 @@ const TRACKS = [
     name: "35",
     url: track35,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:03",
   },
   {
     id: 1,
     name: "35 Beat",
     url: track35beat,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:03",
   },
   {
     id: 2,
     name: "Anachronism",
     url: Anachronism,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:50",
   },
   {
     id: 3,
     name: "Anachronism beat (624 part2)",
     url: Anachronismbeat,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:50",
   },
   {
     id: 4,
     name: "Nothing",
     url: Nothing,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "2:01",
   },
   {
     id: 5,
     name: "Nothing beat",
     url: Nothingbeat,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:58",
   },
   {
     id: 6,
     name: "Static",
     url: staticp,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:28",
   },
   {
     id: 7,
     name: "Static beat",
     url: staticbeat,
     album: "Hitman",
-    artist: "Hitman"
+    artist: "Hitman",
+    length: "3:28",
   }
 ];
 
@@ -83,6 +92,8 @@ export default class Player extends Component {
     this.setState({ playStatus: !this.state.playStatus });
     this.state.playStatus ? this.pauseTrack() : this.playTrack();
   }
+
+
 
   nextTrack() {
     this.setState({
@@ -124,6 +135,7 @@ export default class Player extends Component {
           style={{ backgroundImage: "url(" + background + ")" }}
         />
         <TrackInformation {...this.state.currentTrack} />
+        <div className="songfInfo">{`${this.state.currentTrack.id+1} / ${TRACKS.length}`}</div>
         <Controls
           playStatus={this.state.playStatus}
           onToggle={this.onToggle.bind(this)}

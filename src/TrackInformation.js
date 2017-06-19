@@ -11,6 +11,7 @@ export default class TrackInformation extends Component {
         <div className="Name">{this.props.name}</div>
         <div className="Artist">{this.props.artist}</div>
         <div className="Album">{this.props.album}</div>
+        <div className="Length">Length: {this.props.length}</div>
       </div>
     );
   }
