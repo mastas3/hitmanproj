@@ -11,6 +11,12 @@ import Nothing from "./sound/Nothing.mp3";
 import Nothingbeat from "./sound/Nothing beat.mp3";
 import staticp from "./sound/static.mp3";
 import staticbeat from "./sound/static beat.mp3";
+import MusicSlider from "./MusicSlider";
+
+const lengthInMs = lengthInStr => {
+  let timeArr = lengthInStr.split(":");
+  return timeArr[0]*60*1000 + timeArr[1] * 1000;
+};
 
 const TRACKS = [
   {
@@ -19,7 +25,8 @@ const TRACKS = [
     url: track35,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:03",
+    length: "03:03",
+    lengthInMs: lengthInMs("03:03"),
   },
   {
     id: 1,
@@ -27,7 +34,8 @@ const TRACKS = [
     url: track35beat,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:03",
+    length: "03:03",
+    lengthInMs: lengthInMs("03:03"),
   },
   {
     id: 2,
@@ -35,7 +43,8 @@ const TRACKS = [
     url: Anachronism,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:50",
+    length: "03:50",
+    lengthInMs: lengthInMs("03:50"),
   },
   {
     id: 3,
@@ -43,7 +52,8 @@ const TRACKS = [
     url: Anachronismbeat,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:50",
+    length: "03:50",
+    lengthInMs: lengthInMs("03:50"),
   },
   {
     id: 4,
@@ -51,7 +61,8 @@ const TRACKS = [
     url: Nothing,
     album: "Hitman",
     artist: "Hitman",
-    length: "2:01",
+    length: "02:01",
+    lengthInMs: lengthInMs("02:01"),
   },
   {
     id: 5,
@@ -59,7 +70,8 @@ const TRACKS = [
     url: Nothingbeat,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:58",
+    length: "03:58",
+    lengthInMs: lengthInMs("03:58"),
   },
   {
     id: 6,
@@ -67,7 +79,8 @@ const TRACKS = [
     url: staticp,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:28",
+    length: "03:28",
+    lengthInMs: lengthInMs("03:28"),
   },
   {
     id: 7,
@@ -75,7 +88,8 @@ const TRACKS = [
     url: staticbeat,
     album: "Hitman",
     artist: "Hitman",
-    length: "3:28",
+    length: "03:28",
+    lengthInMs: lengthInMs("03:28"),
   }
 ];
 
@@ -91,18 +105,18 @@ export default class Player extends Component {
   onToggle() {
     this.setState({ playStatus: !this.state.playStatus });
     this.state.playStatus ? this.pauseTrack() : this.playTrack();
+    this.state.playStatus ? PubSub.publish('onPause', 'stuff') : PubSub.publish('onPlay');
   }
-
-
 
   nextTrack() {
     this.setState({
       currentTrack: this.state.currentTrack.id + 1 < TRACKS.length
         ? TRACKS[this.state.currentTrack.id + 1]
         : TRACKS[0],
-        playStatus: false
+      playStatus: false
     });
-    document.getElementById('audio').src = this.state.currentTrack.url
+    PubSub.publish('onNextTrack');
+    document.getElementById("audio").src = this.state.currentTrack.url;
   }
 
   previousTrack() {
@@ -110,9 +124,9 @@ export default class Player extends Component {
       currentTrack: this.state.currentTrack.id - 1 < 0
         ? TRACKS[7]
         : TRACKS[this.state.currentTrack.id - 1],
-        playStatus: false
+      playStatus: false
     });
-    document.getElementById('audio').src = this.state.currentTrack.url
+    document.getElementById("audio").src = this.state.currentTrack.url;
   }
 
   playTrack() {
@@ -127,15 +141,16 @@ export default class Player extends Component {
   }
 
   render() {
-    console.log(this.state.currentTrack)
+    console.log(this.state.currentTrack);
     return (
       <div className="Player">
         <div
           className="Artwork"
           style={{ backgroundImage: "url(" + background + ")" }}
         />
+        <MusicSlider {...this.state.currentTrack} />
+        {/* <div className="songfInfo">{`${this.state.currentTrack.id + 1} / ${TRACKS.length}`}</div> */}
         <TrackInformation {...this.state.currentTrack} />
-        <div className="songfInfo">{`${this.state.currentTrack.id+1} / ${TRACKS.length}`}</div>
         <Controls
           playStatus={this.state.playStatus}
           onToggle={this.onToggle.bind(this)}

@@ -23,10 +23,11 @@ body {
   box-shadow: 0 5px 10px -5px #121212;
   height: 600px;
   position: relative;
-  width: 375px;
+  /*width: 375px;*/
   top: 100px;
   bottom: 0px;
-  padding: 25px;
+  /*padding: 25px;*/
+  padding-top: 28px;
 }
 .Player .Background {
   position: absolute;
@@ -61,11 +62,12 @@ body {
   margin: 30px auto;
   text-align: center;
   position: relative;
+  bottom: 3vh;
 }
 .Player .TrackInformation .Name {
   font-size: 20px;
   margin-bottom: 10px;
-  font-weight: 300;
+  font-weight: bold;
 }
 .Player .TrackInformation .Artist {
   font-size: 16px;
@@ -123,7 +125,7 @@ body {
   font-size: 12px;
 }
 
-.Player .Controls >div {
+.Player .Controls > div {
   position: absolute;
   pointer-events: none;
   margin: auto;
@@ -181,6 +183,7 @@ body {
   margin-left: 5px;
 }
 
+
 .top-buttons {
   display:-webkit-flex;
   display: flex;
@@ -188,7 +191,7 @@ body {
   padding: 0;
   justify-content: flex-start;
   position: relative;
-  top: 115px;
+  top: 10vh;
   left: -20px
 }
 
@@ -267,14 +270,14 @@ body {
 input[type=range] {
   -webkit-appearance: none;
   border: 1px solid white;
-  width: 300px;
+  width: 320px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
     height: 4px;
     background: #ddd;
     border: none;
-    border-radius: px;
+    border-radius: 5px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -283,8 +286,8 @@ input[type=range]::-webkit-slider-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: #FF4700;
-    margin-top: -4px;
+    background: rgb(42, 69, 98);
+    margin-top: -6px;
 }
 
 input[type=range]:focus {
@@ -296,7 +299,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-    width: 300px;
+    width: 320px;
     height: 5px;
     background: #ddd;
     border: none;
@@ -308,7 +311,7 @@ input[type=range]::-moz-range-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: #FF4700;
+    background: rgb(42, 69, 98);
 }
 
 /*hide the outline behind the border*/
@@ -319,4 +322,14 @@ input[type=range]:-moz-focusring{
 
 input[type=range]:focus::-moz-range-track {
     background: #ccc;
+}
+
+.musicSlider {
+  margin-top: 5vh;
+}
+
+.timeAndTimeLeft {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px 0px 10px;
 }

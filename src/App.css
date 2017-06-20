@@ -1,12 +1,13 @@
 .App {
   text-align: center;
   min-width: 400px;
+  height: 100vh;
 }
 
 
 .App-header {
   background-color: #000;
-  height: 15%;
+  height: 12%;
   width: 20%;
   position: absolute;
   top:0;

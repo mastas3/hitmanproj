@@ -3,7 +3,7 @@ import "./App.css";
 import Player from "./Player";
 import Modal from "react-modal";
 import About from "./About";
-import cassette from './sound/cassette.zip'
+import cassette from "./sound/cassette.zip";
 
 const customStyles = {
   content: {
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   handleCloseModal() {
-    console.log('click')
+    console.log("click");
     this.setState({
       showModal: false
     });
@@ -50,9 +50,11 @@ class App extends Component {
             <div onClick={this.handleCloseModal} className="close-modal">X</div>
             <About handleCloseModal={this.handleCloseModal.bind(this)} />
           </Modal>
-          <li className="download-album"><a href={cassette}>Download the album</a></li>
+          <li className="download-album">
+            <a href={cassette}>Download the album</a>
+          </li>
         </ul>
-          <Player />
+        <Player />
       </div>
     );
   }

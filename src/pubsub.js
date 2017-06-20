@@ -1,33 +1,35 @@
-export default class PubSub {
+class PubSub {
   constructor() {
-    this.topics = {}
+    this.topics = {};
   }
 
   hop(topic) {
-    return this.topics.HasOwnProperty(topic)
+    return this.topics.hasOwnProperty(topic);
   }
 
   subscribe(topic, handler) {
-    if(!this.hop(topic)) {
+    if (!this.hop(topic)) {
       this.topics[topic] = [];
     }
 
-    let index = this.topics[topic].push(handler) -1;
+    let index = this.topics[topic].push(handler) - 1;
 
     return {
       remove() {
-        delete this.topics[topic][index]
+        delete this.topics[topic][index];
       }
-    }
+    };
   }
 
   publish(topic, info) {
-    if(!this.hop(topic)) {
+    if (!this.hop(topic)) {
       return;
     }
 
-    this.topics.forEach(item => {
-      item(info != undefined ? info : {})
-    })
+    this.topics[topic].forEach(item => {
+      item(info != undefined ? info : {});
+    });
   }
 }
+
+export default new PubSub();
