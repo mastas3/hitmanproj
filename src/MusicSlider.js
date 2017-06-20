@@ -19,7 +19,7 @@ export default class MusicSlider extends Component {
   }
 
   handleOnPause(currentPositionInTrack) {
-    console.log(currentPositionInTrack)
+    console.log('currentPositionInTrack:' + currentPositionInTrack)
     this.stopInterval();
   }
 
@@ -31,14 +31,14 @@ export default class MusicSlider extends Component {
     });
     clearInterval(this.interval);
     this.interval = null;
+    this.handleOnPlay();
   }
 
   generateNewValue() {
     this.interval = setInterval(() => {
-      console.log("this.state.currentTime: " + this.state.currentTime);
-      console.log("this.props.length: " + this.props.length);
       if (this.state.currentTime == this.props.length) {
         this.stopInterval();
+        PubSub.publish('onFinishedTrack')
         return;
       }
       this.setState({
@@ -75,11 +75,12 @@ export default class MusicSlider extends Component {
     window.clearInterval(this.interval);
   }
 
-  handleSliderInput(e) {
+  handleSliderChange(e) {
     this.setState({
       value: +e.target.value,
       currentTime: this.MStoTimeString(+e.target.value * 320)
     });
+    PubSub.publish('onSliderJump', this.MStoTimeString(+e.target.value * 320));
   }
 
   MStoTimeString(ms) {
@@ -106,7 +107,7 @@ export default class MusicSlider extends Component {
             step={1}
             type="range"
             name="musicslider"
-            onChange={this.handleSliderInput.bind(this)}
+            onChange={this.handleSliderChange.bind(this)}
           />
         </form>
         <div className="timeAndTimeLeft">

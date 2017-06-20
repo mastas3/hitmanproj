@@ -15,7 +15,26 @@ import MusicSlider from "./MusicSlider";
 
 const lengthInMs = lengthInStr => {
   let timeArr = lengthInStr.split(":");
-  return timeArr[0]*60*1000 + timeArr[1] * 1000;
+  return timeArr[0] * 60 * 1000 + timeArr[1] * 1000;
+};
+
+const stringLengthInSecondsFromMS = MS => "" + MS / 1000;
+
+const secondsToTimeString = seconds => {
+  return MStoTimeString(seconds*1000)
+}
+
+const MStoTimeString = ms => {
+  var d = new Date(ms);
+  return [d.getMinutes(), d.getSeconds()]
+    .map(val => {
+      if (val < 10) {
+        return "0" + val;
+      } else {
+        return val;
+      }
+    })
+    .join(":");
 };
 
 const TRACKS = [
@@ -26,7 +45,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:03",
-    lengthInMs: lengthInMs("03:03"),
+    lengthInMs: lengthInMs("03:03")
   },
   {
     id: 1,
@@ -35,7 +54,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:03",
-    lengthInMs: lengthInMs("03:03"),
+    lengthInMs: lengthInMs("03:03")
   },
   {
     id: 2,
@@ -44,7 +63,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:50",
-    lengthInMs: lengthInMs("03:50"),
+    lengthInMs: lengthInMs("03:50")
   },
   {
     id: 3,
@@ -53,7 +72,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:50",
-    lengthInMs: lengthInMs("03:50"),
+    lengthInMs: lengthInMs("03:50")
   },
   {
     id: 4,
@@ -62,7 +81,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "02:01",
-    lengthInMs: lengthInMs("02:01"),
+    lengthInMs: lengthInMs("02:01")
   },
   {
     id: 5,
@@ -71,7 +90,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:58",
-    lengthInMs: lengthInMs("03:58"),
+    lengthInMs: lengthInMs("03:58")
   },
   {
     id: 6,
@@ -80,7 +99,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:28",
-    lengthInMs: lengthInMs("03:28"),
+    lengthInMs: lengthInMs("03:28")
   },
   {
     id: 7,
@@ -89,7 +108,7 @@ const TRACKS = [
     album: "Hitman",
     artist: "Hitman",
     length: "03:28",
-    lengthInMs: lengthInMs("03:28"),
+    lengthInMs: lengthInMs("03:28")
   }
 ];
 
@@ -98,25 +117,42 @@ export default class Player extends Component {
     super(props);
     this.state = {
       playStatus: false,
-      currentTrack: TRACKS[0]
+      currentTrack: TRACKS[0],
+      currentPositionInTrack: null
     };
+    PubSub.subscribe("onSliderJump", this.handleOnSliderJump.bind(this));
+    PubSub.subscribe("onFinishedTrack", this.nextTrack.bind(this, true));
+  }
+
+  handleOnSliderJump(newCurrentPositionInTrack) {
+    console.log(MStoTimeString(lengthInMs(newCurrentPositionInTrack)));
+    document.getElementById("audio").currentTime = stringLengthInSecondsFromMS(
+      lengthInMs(newCurrentPositionInTrack)
+    );
+    this.setState({
+      currentPositionInTrack: newCurrentPositionInTrack
+    });
   }
 
   onToggle() {
     this.setState({ playStatus: !this.state.playStatus });
     this.state.playStatus ? this.pauseTrack() : this.playTrack();
-    this.state.playStatus ? PubSub.publish('onPause', 'stuff') : PubSub.publish('onPlay');
+    this.state.playStatus
+      ? PubSub.publish("onPause", this.state.currentPositionInTrack)
+      : PubSub.publish("onPlay");
   }
 
-  nextTrack() {
+  nextTrack(autoPlay) {
+    console.log("nextTrack: autoplay: "+ autoPlay);
     this.setState({
       currentTrack: this.state.currentTrack.id + 1 < TRACKS.length
         ? TRACKS[this.state.currentTrack.id + 1]
         : TRACKS[0],
-      playStatus: false
+      playStatus: autoPlay
     });
-    PubSub.publish('onNextTrack');
+    PubSub.publish("onNextTrack");
     document.getElementById("audio").src = this.state.currentTrack.url;
+    if (autoPlay) document.getElementById("audio").play();
   }
 
   previousTrack() {
@@ -130,18 +166,27 @@ export default class Player extends Component {
   }
 
   playTrack() {
+    console.log(
+      "this.state.currentPositionInTrack: " + this.state.currentPositionInTrack
+    );
     let audio = document.getElementById("audio");
     audio.src = this.state.currentTrack.url;
+    audio.currentTime = stringLengthInSecondsFromMS(
+      lengthInMs(this.state.currentPositionInTrack || "0:0")
+    );
     audio.play();
   }
 
   pauseTrack() {
     let audio = document.getElementById("audio");
     audio.pause();
+    console.log('audio.currentTime:' + '' + Math.ceil(audio.currentTime))
+    this.setState({
+      currentPositionInTrack: secondsToTimeString(Math.ceil(audio.currentTime))
+    });
   }
 
   render() {
-    console.log(this.state.currentTrack);
     return (
       <div className="Player">
         <div
